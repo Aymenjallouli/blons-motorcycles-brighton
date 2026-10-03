@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Blons Motorcycles, motorcycle repair &amp; servicing in Brighton</title>
+<meta name="description" content="Motorcycle repair and servicing workshop at 8 Little Western Street, Brighton BN1 2PU. Rated 4.9 from 86 Google reviews. Call 07572 170619.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Blons Motorcycles, motorcycle repair &amp; servicing in Brighton">
+<meta property="og:description" content="Servicing, repairs and tyres at 8 Little Western Street, Brighton. Rated 4.9 from 86 Google reviews.">
+<meta name="theme-color" content="#C3151C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C3151C'/%3E%3Ctext x='32' y='47' text-anchor='middle' font-family='Arial Narrow,Arial,sans-serif' font-weight='900' font-size='44' fill='%23fff'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;600&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MotorcycleRepair",
+  "name": "Blons Motorcycles",
+  "legalName": "BLONS MOTORCYCLES LTD",
+  "image": "assets/photos/photo-11.jpg",
+  "telephone": "+447572170619",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "8 Little Western Street",
+    "addressLocality": "Brighton",
+    "addressRegion": "Brighton and Hove",
+    "postalCode": "BN1 2PU",
+    "addressCountry": "GB"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 50.8245899, "longitude": -0.1555848 },
+  "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJB6U89AyFdUgRiSpewLMgjA8",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:30", "closes": "18:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:30", "closes": "13:00" }
+  ],
+  "sameAs": ["https://www.facebook.com/blonsgarage/", "https://www.instagram.com/blonsmotorcycles/"]
+}
+</script>
+<style>
+/* ==========================================================================
+   BLONS MOTORCYCLES — design decisions
+   Palette  Pulled from the workshop photos: whitewashed brick (--bg), the
+            black roller shutter (--ink), the red diamond-plate bike lifts that
+            sit under nearly every bike they post (--brand), and the yellow
+            floor tape / hazard stripes (--accent, only ever on or beside black).
+            Chrome and steel become the cool greys.
+   Type     Barlow Condensed 800/600 for display: narrow, tall, road-sign DNA,
+            lets a poster headline fit a 375px screen. Barlow 400/600 for body.
+   Hero     Full-bleed photo of the flame-painted custom on the red lift, slow
+            Ken Burns, bottom + left scrim, three-line uppercase poster headline.
+   Rhythm   dark photo hero → light proof (giant 4.9 + swipeable reviews)
+            → white workshop split (asymmetric photo pair + numbered list)
+            → ONE red diamond-plate slab with an oversized customer quote
+            → black gallery → light visit (hours, live badge, map)
+            → black contact + footer.
+   Details  live "open now" badge in London time, scroll-snap review rail,
+            <dialog> lightbox, count-up on the review total, subtle reveals.
+   ========================================================================== */
+
+/* Fallback faces sized to the real fonts' widths to keep layout shift low */
+@font-face { font-family: "BC Narrow"; src: local("Arial Narrow Bold"), local("Arial Narrow"), local("Roboto Condensed"); }
+@font-face { font-family: "BC Wide"; src: local("Arial Bold"), local("Arial"), local("Liberation Sans Bold"), local("Liberation Sans"); size-adjust: 74%; }
+@font-face { font-family: "Barlow Fallback"; src: local("Arial"), local("Liberation Sans"); size-adjust: 95%; }
+
+:root {
+  --bg: #F3F1EC;
+  --surface: #FFFFFF;
+  --ink: #15161A;
+  --ink-2: #1E2025;
+  --ink-soft: #50535A;
+  --on-dark-soft: #B9BCC2;
+  --brand: #C3151C;
+  --brand-deep: #9E1016;
+  --brand-ink: #FFFFFF;
+  --accent: #F3C433;
+  --line: #DCD7CE;
+  --line-dark: rgb(255 255 255 / .14);
+
+  --font-display: "Barlow Condensed", "BC Narrow", "BC Wide", sans-serif;
+  --font-body: "Barlow", "Barlow Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --step--1: clamp(.875rem, .85rem + .12vw, .9375rem);
+  --step-0: clamp(1rem, .96rem + .2vw, 1.125rem);
+  --step-1: clamp(1.1875rem, 1.1rem + .42vw, 1.4375rem);
+  --step-2: clamp(1.375rem, 1.2rem + .85vw, 1.9375rem);
+  --step-3: clamp(1.75rem, 1.4rem + 1.6vw, 2.875rem);
+  --step-4: clamp(2.25rem, 1.65rem + 2.9vw, 4.25rem);
+  --step-5: clamp(2.75rem, 1.6rem + 5.6vw, 7rem);
+
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px;
+  --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 96px;
+  --section: clamp(56px, 10vw, 128px);
+  --gutter: clamp(16px, 5vw, 40px);
+  --max: 1200px;
+
+  --r-sm: 8px; --r-md: 16px; --r-lg: 28px;
+  --shadow-1: 0 1px 2px rgb(21 22 26 / .06), 0 3px 8px rgb(21 22 26 / .06);
+  --shadow-2: 0 2px 4px rgb(21 22 26 / .06), 0 12px 28px -8px rgb(21 22 26 / .18);
+  --shadow-3: 0 4px 10px rgb(21 22 26 / .10), 0 28px 60px -16px rgb(21 22 26 / .38);
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur-1: 200ms; --dur-2: 400ms; --dur-3: 700ms;
+
+  --header-h: 64px;
+  --bar-h: 64px;
+  --focus: var(--brand);
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 var(--step-0)/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased; overflow-x: clip;
+}
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 800; line-height: 1.02; letter-spacing: -.01em; text-wrap: balance; overflow-wrap: break-word; }
+p { margin: 0; text-wrap: pretty; }
+a { color: inherit; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+figure, blockquote { margin: 0; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+[id] { scroll-margin-top: calc(var(--header-h) + 12px); }
+.nowrap { white-space: nowrap; }
+.sr-only { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.wrap { width: min(var(--max), 100% - 2 * var(--gutter)); margin-inline: auto; }
+.section { padding-block: var(--section); }
+.section--dark { background: var(--ink); color: #fff; --focus: var(--accent); }
+
+.i { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.i--fill { fill: currentColor; stroke: none; }
+
+.skip {
+  position: absolute; left: var(--space-4); top: -120px; z-index: 100;
+  display: inline-flex; align-items: center; min-height: 48px; padding: 0 var(--space-5);
+  background: var(--accent); color: var(--ink); font-weight: 600; border-radius: var(--r-sm); text-decoration: none;
+}
+.skip:focus { top: var(--space-3); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  font: 600 var(--step--1)/1.2 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft);
+}
+.eyebrow::before {
+  content: ""; width: 28px; height: 8px; border-radius: 2px; flex: none;
+  background: repeating-linear-gradient(-45deg, var(--accent) 0 5px, var(--ink) 5px 10px);
+}
+.section--dark .eyebrow, .slab .eyebrow, .hero .eyebrow { color: var(--on-dark-soft); }
+.section--dark .eyebrow::before, .hero .eyebrow::before { background: repeating-linear-gradient(-45deg, var(--accent) 0 5px, transparent 5px 10px); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 0 var(--space-5); border-radius: var(--r-sm); border: 1.5px solid transparent;
+  font: 600 var(--step-0)/1.1 var(--font-body); text-decoration: none; white-space: nowrap; cursor: pointer;
+  transition: transform var(--dur-1) var(--ease);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn--brand { background: var(--brand); color: var(--brand-ink); box-shadow: 0 8px 20px -8px rgb(195 21 28 / .7); }
+.btn--brand:hover { background: var(--brand-deep); }
+.btn--line { border-color: rgb(255 255 255 / .55); color: #fff; }
+.btn--line:hover { border-color: #fff; background: rgb(255 255 255 / .08); }
+.btn--ink { background: var(--ink); color: #fff; }
+.btn--ink:hover { background: #000; }
+.btn--outline { border-color: var(--ink); color: var(--ink); }
+.btn--outline:hover { background: var(--ink); color: #fff; }
+
+.link-arrow {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
+  font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 5px;
+}
+.link-arrow .i { width: 18px; height: 18px; transition: transform var(--dur-1) var(--ease); }
+.link-arrow:hover .i { transform: translate(2px, -2px); }
+
+.stars { display: inline-flex; gap: 2px; color: var(--brand); }
+.stars .i { width: 18px; height: 18px; }
+
+/* ---------- Header ---------- */
+.site-header { position: fixed; inset: 0 0 auto; z-index: 50; height: var(--header-h); color: #fff; --focus: var(--accent); }
+.header-call { display: none; }
+.site-header::before {
+  content: ""; position: absolute; inset: 0; background: var(--ink); opacity: 0;
+  box-shadow: 0 1px 0 rgb(255 255 255 / .06); transition: opacity var(--dur-2) var(--ease);
+}
+.site-header.is-solid::before { opacity: 1; }
+.header-inner { position: relative; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.brand { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; }
+.brand__mark {
+  width: 38px; height: 38px; border-radius: 9px; background: var(--brand); color: #fff;
+  display: grid; place-items: center; font: 800 26px/1 var(--font-display);
+}
+.brand__name { display: flex; flex-direction: column; font: 800 25px/.88 var(--font-display); letter-spacing: .03em; text-transform: uppercase; }
+.brand__name small { font: 600 10.5px/1 var(--font-body); letter-spacing: .3em; margin-top: 4px; color: var(--on-dark-soft); }
+
+.menu-toggle {
+  position: relative; z-index: 2; width: 48px; height: 48px; margin-right: -8px;
+  display: grid; place-items: center; background: none; border: 0; border-radius: var(--r-sm); cursor: pointer;
+}
+.menu-toggle .i { width: 26px; height: 26px; }
+.menu-toggle .i--close { display: none; }
+.menu-toggle[aria-expanded="true"] .i--menu { display: none; }
+.menu-toggle[aria-expanded="true"] .i--close { display: block; }
+
+.nav {
+  position: fixed; inset: 0; z-index: 1; background: var(--ink);
+  padding: calc(var(--header-h) + var(--space-5)) var(--gutter) calc(var(--space-6) + env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-6); overflow-y: auto;
+  visibility: hidden; opacity: 0; transform: translateY(-12px);
+  transition: opacity var(--dur-2) var(--ease), transform var(--dur-2) var(--ease), visibility 0s linear var(--dur-2);
+  --focus: var(--accent);
+}
+.nav.is-open { visibility: visible; opacity: 1; transform: none; transition-delay: 0s; }
+.nav__links a {
+  display: flex; align-items: center; justify-content: space-between; min-height: 64px;
+  border-bottom: 1px solid var(--line-dark); text-decoration: none;
+  font: 800 var(--step-3)/1 var(--font-display); text-transform: uppercase; letter-spacing: .01em;
+}
+.nav__links a .i { color: var(--accent); }
+.nav__cta { display: grid; gap: var(--space-3); }
+.nav__cta .btn { width: 100%; }
+html.menu-open, html.menu-open body { overflow: hidden; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; isolation: isolate; overflow: hidden; color: #fff; background: var(--ink);
+  min-height: calc(100svh - var(--bar-h) - env(safe-area-inset-bottom));
+  display: flex; align-items: flex-end;
+}
+.hero__media { position: absolute; inset: 0; z-index: -2; }
+.hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: 68% 50%; transform-origin: 70% 60%; }
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, rgb(21 22 26 / .82) 0%, rgb(21 22 26 / 0) 20%),
+    linear-gradient(180deg, rgb(21 22 26 / 0) 22%, rgb(21 22 26 / .6) 44%, rgb(21 22 26 / .92) 68%, var(--ink) 100%);
+}
+.hero__content { padding-block: calc(var(--header-h) + var(--space-6)) clamp(28px, 6vw, 88px); }
+.hero__content { text-shadow: 0 1px 2px rgb(0 0 0 / .35), 0 2px 18px rgb(0 0 0 / .45); }
+.hero__content .btn, .hero__content .chip { text-shadow: none; }
+.hero .eyebrow { color: #fff; }
+.hero h1 {
+  margin-top: var(--space-4); font-size: var(--step-5); line-height: .94; letter-spacing: -.005em; text-transform: uppercase;
+}
+.hero h1 span { display: block; }
+.hero h1 span:last-child { color: var(--accent); }
+.hero__lead { margin-top: var(--space-4); max-width: 34ch; font-size: var(--step-1); line-height: 1.45; color: #E4E5E8; }
+.hero__actions { margin-top: var(--space-5); display: flex; flex-wrap: wrap; gap: var(--space-3); max-width: 480px; }
+.hero__actions .btn { flex: 1 1 auto; padding-inline: var(--space-4); }
+.hero__chips { margin-top: var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px;
+  border-radius: 999px; background: rgb(21 22 26 / .62); border: 1px solid rgb(255 255 255 / .18);
+  font: 600 var(--step--1)/1 var(--font-body); color: #fff; text-decoration: none; white-space: nowrap;
+}
+.chip .i { width: 16px; height: 16px; color: var(--accent); }
+a.chip:hover { border-color: rgb(255 255 255 / .5); }
+.status-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--on-dark-soft); flex: none; }
+.is-open .status-dot { background: #3FD07A; box-shadow: 0 0 0 4px rgb(63 208 122 / .2); }
+.is-closed .status-dot { background: #F07A6E; }
+
+/* ---------- Proof ---------- */
+.proof { padding-bottom: calc(var(--section) * .8); }
+.proof__head { display: grid; gap: var(--space-6); align-items: end; }
+.score { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: var(--space-5); row-gap: var(--space-1); }
+.score__num {
+  grid-row: span 3; font: 800 clamp(5.5rem, 4rem + 9vw, 11rem)/.8 var(--font-display); letter-spacing: -.03em; color: var(--ink);
+}
+.score .stars .i { width: 20px; height: 20px; }
+.score__count { font-weight: 600; }
+.score .link-arrow { grid-column: 1 / -1; justify-self: start; margin-top: var(--space-3); color: var(--brand); }
+.proof__intro h2 { margin-top: var(--space-3); font-size: var(--step-4); max-width: 18ch; }
+.proof__intro p:last-child { margin-top: var(--space-4); color: var(--ink-soft); max-width: 58ch; }
+
+.rail-wrap { position: relative; margin-top: var(--space-7); }
+.rail {
+  display: flex; gap: var(--space-4); overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scrollbar-width: none;
+  padding: var(--space-2) max(var(--gutter), (100% - var(--max)) / 2) var(--space-5);
+  scroll-padding-inline: max(var(--gutter), (100% - var(--max)) / 2);
+}
+.rail::-webkit-scrollbar { display: none; }
+.rail:focus-visible { outline-offset: -3px; }
+.review {
+  flex: 0 0 min(86%, 380px); scroll-snap-align: start;
+  display: flex; flex-direction: column; gap: var(--space-4);
+  padding: var(--space-5); background: var(--surface); border-radius: var(--r-md); box-shadow: var(--shadow-1);
+  border: 1px solid rgb(21 22 26 / .05);
+}
+.review blockquote { flex: 1; }
+.review blockquote p { font-size: var(--step-0); line-height: 1.55; }
+.review footer { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-3); padding-top: var(--space-4); border-top: 1px solid var(--line); }
+.review cite { font-style: normal; font-weight: 600; }
+.review time { color: var(--ink-soft); font-size: var(--step--1); }
+.rail__nav { display: none; }
+
+/* ---------- Workshop ---------- */
+.workshop { background: var(--surface); }
+.workshop__grid { display: grid; gap: var(--space-6); grid-template-areas: "head" "media" "list"; }
+.workshop__head { grid-area: head; }
+.workshop__head h2 { margin-top: var(--space-3); font-size: var(--step-4); max-width: 14ch; }
+.workshop__head p:last-child { margin-top: var(--space-5); color: var(--ink-soft); max-width: 60ch; }
+.workshop__media { grid-area: media; position: relative; padding-bottom: var(--space-5); }
+.ph { overflow: hidden; border-radius: var(--r-md); background: var(--ink); }
+.ph img { width: 100%; height: 100%; object-fit: cover; }
+.ph--main { aspect-ratio: 4 / 5; width: 84%; box-shadow: var(--shadow-2); }
+.ph--inset {
+  position: absolute; right: 0; bottom: 0; width: 46%; aspect-ratio: 1;
+  border: 6px solid var(--surface); border-radius: var(--r-md); box-shadow: var(--shadow-3);
+}
+.ph--main figcaption, .ph--inset figcaption { display: none; }
+.services { grid-area: list; counter-reset: svc; border-top: 2px solid var(--ink); }
+.services li { display: grid; grid-template-columns: 3.2rem 1fr; gap: var(--space-4); padding-block: var(--space-5); border-bottom: 1px solid var(--line); }
+.services__n { font: 600 var(--step-2)/1 var(--font-display); color: var(--brand); padding-top: 2px; }
+.services h3 { font-size: var(--step-2); letter-spacing: 0; }
+.services p { margin-top: var(--space-2); color: var(--ink-soft); }
+
+/* ---------- Red slab ---------- */
+.slab {
+  position: relative; color: #fff; padding-block: clamp(72px, 12vw, 160px);
+  background-color: var(--brand);
+  background-image:
+    radial-gradient(120% 90% at 85% 0%, rgb(255 255 255 / .10), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cg fill='%23fff' fill-opacity='.10'%3E%3Crect x='2.2' y='5.7' width='10' height='3' rx='1.5' transform='rotate(-45 7.2 7.2)'/%3E%3Crect x='18.2' y='21.7' width='10' height='3' rx='1.5' transform='rotate(-45 23.2 23.2)'/%3E%3Crect x='18.2' y='5.7' width='10' height='3' rx='1.5' transform='rotate(45 23.2 7.2)'/%3E%3Crect x='2.2' y='21.7' width='10' height='3' rx='1.5' transform='rotate(45 7.2 23.2)'/%3E%3C/g%3E%3Cg fill='%23000' fill-opacity='.18'%3E%3Crect x='3' y='6.5' width='10' height='3' rx='1.5' transform='rotate(-45 8 8)'/%3E%3Crect x='19' y='22.5' width='10' height='3' rx='1.5' transform='rotate(-45 24 24)'/%3E%3Crect x='19' y='6.5' width='10' height='3' rx='1.5' transform='rotate(45 24 8)'/%3E%3Crect x='3' y='22.5' width='10' height='3' rx='1.5' transform='rotate(45 8 24)'/%3E%3C/g%3E%3C/svg%3E");
+  --focus: #fff;
+}
+.slab .eyebrow { color: #fff; }
+.slab .eyebrow::before { background: repeating-linear-gradient(-45deg, var(--accent) 0 5px, var(--ink) 5px 10px); }
+.bigquote { margin-top: var(--space-6); }
+.bigquote__lead, .bigquote__tail { font: 600 var(--step-2)/1.3 var(--font-display); max-width: 40ch; color: rgb(255 255 255 / .92); }
+.bigquote__hit {
+  margin-block: var(--space-4); font: 800 var(--step-5)/.96 var(--font-display); letter-spacing: -.015em;
+  max-width: 15ch; text-wrap: balance;
+}
+.bigquote figcaption { margin-top: var(--space-6); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); font-weight: 600; }
+.bigquote figcaption .stars { color: var(--accent); }
+.bigquote figcaption span:last-child { color: rgb(255 255 255 / .85); font-weight: 400; }
+
+/* ---------- Gallery ---------- */
+.gallery__head { display: grid; gap: var(--space-4); }
+.gallery__head h2 { font-size: var(--step-4); max-width: 16ch; }
+.gallery__head p:last-child { color: var(--on-dark-soft); max-width: 52ch; }
+.grid { margin-top: var(--space-7); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+.grid li { aspect-ratio: 3 / 4; min-width: 0; }
+.grid .g-full { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+.grid .g-sq { aspect-ratio: 1; }
+.tile {
+  position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0;
+  border-radius: var(--r-md); overflow: hidden; background: var(--ink-2); cursor: zoom-in;
+}
+.tile img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-3) var(--ease); }
+.tile:hover img { transform: scale(1.04); }
+.tile__cap {
+  position: absolute; left: 10px; bottom: 10px; max-width: calc(100% - 20px);
+  padding: 7px 12px; border-radius: 999px; background: rgb(21 22 26 / .78);
+  font: 600 var(--step--1)/1.2 var(--font-body); color: #fff; text-align: left;
+}
+.tile__zoom {
+  position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center; background: rgb(21 22 26 / .7); color: #fff;
+}
+.tile__zoom .i { width: 18px; height: 18px; }
+
+.lightbox {
+  width: 100%; max-width: 100%; height: 100%; max-height: 100%; margin: 0; padding: 0; border: 0;
+  background: #0C0C0E; color: #fff; --focus: var(--accent);
+}
+.lightbox[open] { display: grid; grid-template-rows: auto 1fr auto; }
+.lightbox::backdrop { background: rgb(0 0 0 / .7); }
+.lb__top { display: flex; justify-content: space-between; align-items: center; padding: var(--space-3) var(--gutter); }
+.lb__count { font: 600 var(--step--1)/1 var(--font-body); color: var(--on-dark-soft); letter-spacing: .08em; }
+.lb__stage { min-height: 0; display: grid; place-items: center; padding: 0 var(--gutter); }
+.lb__stage img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: var(--r-sm); }
+.lb__bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-4) var(--gutter) calc(var(--space-4) + env(safe-area-inset-bottom)); }
+.lb__cap { flex: 1; text-align: center; font-weight: 600; }
+.icon-btn {
+  width: 48px; height: 48px; flex: none; display: grid; place-items: center; cursor: pointer;
+  border-radius: 50%; border: 1.5px solid currentColor; background: transparent;
+  transition: transform var(--dur-1) var(--ease);
+}
+.icon-btn:hover { transform: scale(1.06); }
+.icon-btn .i { width: 22px; height: 22px; }
+
+/* ---------- Visit ---------- */
+.visit__grid { display: grid; gap: var(--space-7); }
+.visit__info h2 { margin-top: var(--space-3); font-size: var(--step-4); }
+.visit__addr { margin-top: var(--space-2); font: 600 var(--step-2)/1.1 var(--font-display); color: var(--ink-soft); }
+.status {
+  margin-top: var(--space-5); display: inline-flex; align-items: center; gap: 10px; min-height: 40px; padding: 0 16px;
+  border-radius: 999px; background: var(--ink); color: #fff; font-weight: 600; font-size: var(--step--1);
+}
+.hours { margin-top: var(--space-5); width: 100%; max-width: 460px; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.hours th, .hours td { padding: 12px 10px; text-align: left; border-bottom: 1px solid var(--line); font-weight: 400; }
+.hours td { text-align: right; white-space: nowrap; }
+.hours tr.is-closed-day td { color: var(--ink-soft); }
+.hours tr.is-today { background: var(--surface); box-shadow: inset 4px 0 0 var(--brand); }
+.hours tr.is-today th, .hours tr.is-today td { font-weight: 600; }
+.today-tag {
+  margin-left: 8px; padding: 2px 8px; border-radius: 999px; background: var(--brand); color: #fff;
+  font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; vertical-align: 2px;
+}
+.facts { margin-top: var(--space-6); display: grid; gap: var(--space-3); }
+.facts li { display: flex; align-items: center; gap: var(--space-3); }
+.facts .i { color: var(--brand); width: 22px; height: 22px; }
+.visit__aside { display: grid; gap: var(--space-4); align-content: start; }
+.map {
+  position: relative; aspect-ratio: 4 / 3; border-radius: var(--r-lg); overflow: hidden;
+  background: #E3E0D9; box-shadow: var(--shadow-2);
+}
+.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map__fallback { color: var(--ink-soft); font-size: var(--step--1); }
+.map__fallback a { color: var(--ink); font-weight: 600; }
+.visit__actions { display: grid; gap: var(--space-3); }
+.visit__photo { display: grid; grid-template-columns: 112px 1fr; gap: var(--space-4); align-items: center; margin-top: var(--space-2); }
+.visit__photo img { width: 112px; height: 84px; object-fit: cover; border-radius: var(--r-sm); filter: contrast(1.08) saturate(1.05); }
+.visit__photo figcaption { color: var(--ink-soft); font-size: var(--step--1); line-height: 1.45; }
+
+/* ---------- Contact ---------- */
+.contact { position: relative; overflow: hidden; }
+.contact__grid { display: grid; gap: var(--space-7); }
+.contact h2 { margin-top: var(--space-3); font-size: var(--step-4); max-width: 14ch; }
+.contact__copy p:last-child { margin-top: var(--space-4); color: var(--on-dark-soft); max-width: 46ch; }
+.bignum {
+  display: inline-flex; flex-direction: column; text-decoration: none; min-height: 44px;
+}
+.bignum small { font: 600 var(--step--1)/1 var(--font-body); color: var(--accent); letter-spacing: .14em; text-transform: uppercase; }
+.bignum span {
+  margin-top: var(--space-3); font: 800 clamp(2.75rem, 1.6rem + 5.4vw, 6rem)/.95 var(--font-display); letter-spacing: -.01em;
+  background-image: linear-gradient(var(--brand), var(--brand)); background-size: 0% 4px; background-repeat: no-repeat; background-position: 0 100%;
+  padding-bottom: 6px; transition: background-size var(--dur-3) var(--ease);
+}
+.bignum:hover span { background-size: 100% 4px; }
+.contact__btns { margin-top: var(--space-6); display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.social { margin-top: var(--space-6); display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.social a {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px 0 14px;
+  border-radius: 999px; border: 1px solid var(--line-dark); text-decoration: none; font-weight: 600;
+}
+.social a:hover { border-color: rgb(255 255 255 / .5); }
+
+/* ---------- Footer ---------- */
+.site-footer { background: #0E0F12; color: var(--on-dark-soft); padding-block: var(--space-8) calc(var(--space-6) + var(--bar-h) + env(safe-area-inset-bottom)); font-size: var(--step--1); --focus: var(--accent); }
+.site-footer .brand { color: #fff; }
+.footer__grid { display: grid; gap: var(--space-6); }
+.footer__grid address { font-style: normal; line-height: 1.7; }
+.footer__grid a { color: #fff; }
+.footer__legal { padding-top: var(--space-5); border-top: 1px solid var(--line-dark); display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); justify-content: space-between; }
+
+/* ---------- Mobile action bar ---------- */
+.actionbar {
+  position: fixed; inset: auto 0 0; z-index: 40; display: grid; grid-template-columns: repeat(3, 1fr);
+  background: var(--ink); border-top: 1px solid var(--line-dark); padding-bottom: env(safe-area-inset-bottom);
+  --focus: var(--accent);
+}
+.actionbar a {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  min-height: var(--bar-h); color: #fff; text-decoration: none; font-weight: 600; font-size: 14px;
+}
+.actionbar a + a { border-left: 1px solid var(--line-dark); }
+.actionbar .is-primary { background: var(--brand); }
+.actionbar .i { width: 22px; height: 22px; }
+
+/* ---------- Motion ---------- */
+@keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.12) translate(-1.5%, -1%); } }
+.hero__media img { animation: kenburns 26s var(--ease) both alternate infinite; }
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity var(--dur-3) var(--ease), transform var(--dur-3) var(--ease); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+.js .reveal-d1 { transition-delay: 90ms; }
+.js .reveal-d2 { transition-delay: 180ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- ≥ 640 ---------- */
+@media (min-width: 640px) {
+  .hero__actions { max-width: none; }
+  .hero__actions .btn { flex: 0 0 auto; padding-inline: var(--space-5); }
+  .score { max-width: 520px; }
+  .grid { grid-template-columns: repeat(12, 1fr); grid-template-rows: clamp(300px, 44vw, 540px) clamp(220px, 26vw, 330px) clamp(260px, 34vw, 440px); }
+  .grid li, .grid .g-full, .grid .g-sq { aspect-ratio: auto; grid-column: span 4; }
+  .grid li:nth-child(1), .grid li:nth-child(6) { grid-column: span 7; }
+  .grid li:nth-child(2), .grid li:nth-child(7) { grid-column: span 5; }
+  .visit__actions { display: flex; flex-wrap: wrap; }
+  .visit__photo { grid-template-columns: 160px 1fr; }
+  .visit__photo img { width: 160px; height: 112px; }
+  .footer__grid { grid-template-columns: 1.3fr 1fr 1fr; }
+  .footer__legal { grid-column: 1 / -1; }
+}
+
+/* ---------- ≥ 768: no bottom bar ---------- */
+@media (min-width: 768px) {
+  :root { --bar-h: 0px; }
+  .actionbar { display: none; }
+  .hero { min-height: min(100svh, 980px); }
+  .header-call { display: inline-flex; position: relative; z-index: 2; min-height: 44px; margin-left: auto; padding-inline: var(--space-4); }
+  html.menu-open .header-call { visibility: hidden; }
+}
+
+/* ---------- ≥ 960 ---------- */
+@media (min-width: 960px) {
+  :root { --header-h: 76px; }
+  .menu-toggle, .header-call { display: none; }
+  .nav {
+    position: static; inset: auto; padding: 0; background: none; visibility: visible; opacity: 1; transform: none;
+    flex-direction: row; align-items: center; gap: var(--space-6); overflow: visible; transition: none;
+  }
+  .nav__links { display: flex; gap: var(--space-5); }
+  .nav__links a {
+    min-height: 44px; border: 0; font: 600 15px/1 var(--font-body); letter-spacing: .08em; position: relative;
+  }
+  .nav__links a .i { display: none; }
+  .nav__links a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 8px; height: 2px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left; transition: transform var(--dur-2) var(--ease);
+  }
+  .nav__links a:hover::after { transform: scaleX(1); }
+  .nav__cta { display: flex; }
+  .nav__cta .btn { width: auto; min-height: 46px; }
+  .nav__cta .btn--line { display: none; }
+
+  .hero::after {
+    background:
+      linear-gradient(180deg, rgb(21 22 26 / .7) 0%, rgb(21 22 26 / 0) 18%),
+      linear-gradient(90deg, rgb(21 22 26 / .92) 0%, rgb(21 22 26 / .72) 34%, rgb(21 22 26 / .1) 64%, rgb(21 22 26 / 0) 100%),
+      linear-gradient(180deg, rgb(21 22 26 / 0) 60%, rgb(21 22 26 / .6) 100%);
+  }
+  .hero__media img { object-position: 70% 60%; }
+  .hero__content { padding-bottom: clamp(56px, 8vw, 112px); }
+  .hero__lead { max-width: 40ch; }
+
+  .proof__head { grid-template-columns: 5fr 7fr; gap: var(--space-8); }
+  .score { grid-template-columns: auto; row-gap: var(--space-3); }
+  .score__num { grid-row: auto; }
+  .rail__nav { display: flex; gap: var(--space-3); justify-content: flex-end; margin-top: var(--space-2); }
+  .review { flex-basis: 380px; padding: var(--space-6); }
+
+  .workshop__grid { grid-template-columns: 5fr 6fr; grid-template-areas: "media head" "media list"; column-gap: var(--space-9); row-gap: var(--space-6); align-items: start; }
+  .workshop__media { position: sticky; top: calc(var(--header-h) + var(--space-5)); padding-bottom: var(--space-8); }
+  .ph--main { width: 88%; }
+  .ph--inset { width: 48%; }
+
+  .bigquote__lead { max-width: 46ch; }
+  .bigquote__hit { max-width: none; margin-block: var(--space-5) var(--space-6); font-size: clamp(5rem, .5rem + 9.4vw, 9.5rem); line-height: .92; }
+  .bigquote figcaption { margin-top: var(--space-5); }
+  .proof { padding-bottom: var(--space-8); }
+
+  .gallery__head { grid-template-columns: 7fr 5fr; align-items: end; gap: var(--space-7); }
+  .gallery__head .eyebrow { grid-column: 1 / -1; }
+
+  .visit__grid { grid-template-columns: 5fr 7fr; gap: var(--space-8); align-items: start; }
+  .map { aspect-ratio: 7 / 6; }
+
+  .contact__grid { grid-template-columns: 5fr 7fr; align-items: end; }
+  .contact__actions { justify-self: end; }
+}
+
+@media (max-width: 359px) {
+  .hero .eyebrow { letter-spacing: .06em; }
+  .hero .eyebrow::before { display: none; }
+}
+@media (max-width: 479px) {
+  .hide-sm { display: none; }
+  .hero__actions .btn--line { display: none; }
+}
+</style>
+<!--sf:preview--><meta name="robots" content="noindex, nofollow"><!--/sf:preview-->
+<!--sf:og--><meta property="og:image" content="https://blons-motorcycles-brighton.aymenjallouli.dev/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://blons-motorcycles-brighton.aymenjallouli.dev/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://blons-motorcycles-brighton.aymenjallouli.dev/og.jpg"><!--/sf:og-->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5.2 3.5h3.3l1.7 4.2-2.3 1.5a11.5 11.5 0 0 0 6.9 6.9l1.5-2.3 4.2 1.7v3.3a1.9 1.9 0 0 1-2 1.9A16.8 16.8 0 0 1 3.3 5.5a1.9 1.9 0 0 1 1.9-2z"/></symbol>
+  <symbol id="i-sms" viewBox="0 0 24 24"><path d="M20.5 11.6a8.3 8.3 0 0 1-12.2 7.3L3.5 20l1.2-4.4a8.3 8.3 0 1 1 15.8-4z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24"><path d="M3.5 10.8 20.5 3.5l-7.3 17-2.1-8.1z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.6a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.4l-5.8 3 1.1-6.4-4.7-4.6 6.5-.9z"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 5.5 6.5 6.5L9 18.5"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5.5 8.5 12l6.5 6.5"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3.5 8.5h17M3.5 15.5h17"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><path d="M14.5 4.5h5v5M9.5 19.5h-5v-5M19.5 4.5l-6 6M4.5 19.5l6-6"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M15.5 3.5h-2.7a3.8 3.8 0 0 0-3.8 3.8v2.9H6.5v3.6H9v6.7h3.6v-6.7h2.7l.6-3.6h-3.3V7.8c0-.6.5-1 1-1h1.9z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.2 6.8h.01"/></symbol>
+  <symbol id="i-access" viewBox="0 0 24 24"><circle cx="11" cy="4.3" r="1.6"/><path d="M11 7.5v6h5.5l2.5 5.5"/><path d="M11 10.5h4.5"/><path d="M7.6 11a5.6 5.6 0 1 0 7.4 7.4"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24"><path d="M7 8.5a5.5 5.5 0 0 1 0 7M10.5 6a9.5 9.5 0 0 1 0 12M14 3.5a13.5 13.5 0 0 1 0 17"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4.5h12.5l-2.5 4 2.5 4H5"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#main" aria-label="Blons Motorcycles, back to top">
+      <span class="brand__mark" aria-hidden="true">B</span>
+      <span class="brand__name" aria-hidden="true">Blons<small>Motorcycles</small></span>
+    </a>
+    <a class="btn btn--brand header-call" href="tel:+447572170619"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call 07572 170619</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <svg class="i i--menu" aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="i i--close" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul class="nav__links">
+        <li><a href="#workshop">Workshop <svg class="i" aria-hidden="true"><use href="#i-right"/></svg></a></li>
+        <li><a href="#reviews">Reviews <svg class="i" aria-hidden="true"><use href="#i-right"/></svg></a></li>
+        <li><a href="#gallery">On the lift <svg class="i" aria-hidden="true"><use href="#i-right"/></svg></a></li>
+        <li><a href="#visit">Hours &amp; map <svg class="i" aria-hidden="true"><use href="#i-right"/></svg></a></li>
+        <li><a href="#contact">Contact <svg class="i" aria-hidden="true"><use href="#i-right"/></svg></a></li>
+      </ul>
+      <div class="nav__cta">
+        <a class="btn btn--brand" href="tel:+447572170619"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call 07572 170619</a>
+        <a class="btn btn--line" href="sms:+447572170619?&amp;body=Hello%20Blons%2C%20I%20would%20like%20to%20ask%20about%20my%20bike.%20Make%20and%20model%3A%20"><svg class="i" aria-hidden="true"><use href="#i-sms"/></svg>Send a text</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__media">
+      <img src="assets/photos/photo-11.jpg" width="1419" height="1080" fetchpriority="high" decoding="async"
+           alt="Blue flame-painted custom motorcycle on the red lift inside the Blons Motorcycles workshop">
+    </div>
+    <div class="wrap hero__content">
+      <p class="eyebrow"><span>Motorcycle repair<span class="hide-sm"> &amp; servicing</span> · Brighton</span></p>
+      <h1 id="hero-title"><span>Straight talk.</span> <span>Fair prices.</span> <span>Bikes sorted.</span></h1>
+      <p class="hero__lead">Servicing, repairs and tyres at 8 Little Western Street, the same workshop address since 2018.</p>
+      <div class="hero__actions">
+        <a class="btn btn--brand" href="tel:+447572170619"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call the workshop</a>
+        <a class="btn btn--line" href="sms:+447572170619?&amp;body=Hello%20Blons%2C%20I%20would%20like%20to%20ask%20about%20my%20bike.%20Make%20and%20model%3A%20"><svg class="i" aria-hidden="true"><use href="#i-sms"/></svg>Send a text</a>
+      </div>
+      <div class="hero__chips">
+        <a class="chip" href="https://www.google.com/maps/place/?q=place_id:ChIJB6U89AyFdUgRiSpewLMgjA8" target="_blank" rel="noopener">
+          <svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg>4.9 · 86 Google reviews
+        </a>
+        <span class="chip" data-status><span class="status-dot" aria-hidden="true"></span><span data-status-text>Mon–Fri 9:30 am – 6 pm</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof -->
+  <section class="proof section" id="reviews" aria-labelledby="proof-title">
+    <div class="wrap proof__head">
+      <div class="score reveal">
+        <p class="score__num" aria-hidden="true">4.9</p>
+        <p class="stars" role="img" aria-label="Rated 4.9 out of 5">
+          <svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg>
+        </p>
+        <p class="score__count">from <span data-count="86">86</span> Google reviews</p>
+        <a class="link-arrow" href="https://www.google.com/maps/place/?q=place_id:ChIJB6U89AyFdUgRiSpewLMgjA8" target="_blank" rel="noopener">Read all 86 reviews on Google<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+      </div>
+      <div class="proof__intro reveal reveal-d1">
+        <p class="eyebrow">What riders say</p>
+        <h2 id="proof-title">They know their stuff, and they tell you straight.</h2>
+        <p>Read through the reviews and the same things keep coming up: honest communication, fair prices, quick work and a team that explains what your bike needs.</p>
+      </div>
+    </div>
+
+    <div class="rail-wrap">
+      <ul class="rail" tabindex="0" aria-label="Customer reviews from Google">
+        <li class="review">
+          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+          <blockquote><p>“Very happy with the service and treatment. Very communicative and honest. Also, a very good price. Finally, I have a good workshop where they're good at repairing motorcycles.”</p></blockquote>
+          <footer><cite>Alvaro F.</cite><time datetime="2025-07">July 2025</time></footer>
+        </li>
+        <li class="review">
+          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+          <blockquote><p>“cheap and affordable and they know their stuff, they are the only people you need to come to to get your bike fixed and serviced, lovely respectful family, I'll always go to them…”</p></blockquote>
+          <footer><cite>Yusuf</cite><time datetime="2026-05">May 2026</time></footer>
+        </li>
+        <li class="review">
+          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+          <blockquote><p>“From the moment you walk in, you are treated like part of a working family — with respect, honesty, and genuine care. … They take time to explain everything clearly, provide practical advice, and ensure you feel confident in your decision.”</p></blockquote>
+          <footer><cite>Pavan S.</cite><time datetime="2026-02">February 2026</time></footer>
+        </li>
+        <li class="review">
+          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+          <blockquote><p>“Friendly staff, helped me remove stuck piston on my hondas break calipers, fast service and well priced”</p></blockquote>
+          <footer><cite>Modou D.</cite><time datetime="2025-07">July 2025</time></footer>
+        </li>
+        <li class="review">
+          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+          <blockquote><p>“Professional service, honest communication, and great attention to detail. … My bike was serviced quickly and the quality of the work exceeded my expectations.”</p></blockquote>
+          <footer><cite>C M.</cite><time datetime="2022-01">January 2022</time></footer>
+        </li>
+        <li class="review">
+          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+          <blockquote><p>“A great motorcycle repair and maintenance shop, offering excellent service quality and prices.”</p></blockquote>
+          <footer><cite>Gustavo D.</cite><time datetime="2026-08">August 2026</time></footer>
+        </li>
+        <li class="review">
+          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+          <blockquote><p>“Quick and efficient… The best in brighton&amp;hove”</p></blockquote>
+          <footer><cite>Giulia B.</cite><time datetime="2025-10">October 2025</time></footer>
+        </li>
+      </ul>
+      <div class="wrap rail__nav">
+        <button class="icon-btn" type="button" data-rail="-1" aria-label="Previous reviews"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
+        <button class="icon-btn" type="button" data-rail="1" aria-label="Next reviews"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workshop / services -->
+  <section class="workshop section" id="workshop" aria-labelledby="workshop-title">
+    <div class="wrap workshop__grid">
+      <div class="workshop__head reveal">
+        <p class="eyebrow">The workshop</p>
+        <h2 id="workshop-title">From <span class="nowrap">L-plates</span> to <span class="nowrap">flame-painted</span> customs.</h2>
+        <p>Blons Motorcycles is a repair and servicing workshop on Little Western Street in Brighton. Commuter scooters, learner bikes, adventure bikes, superbikes and old customs all end up on the same red lift, and riders keep mentioning the same thing: the work is explained clearly and priced fairly.</p>
+      </div>
+      <div class="workshop__media">
+        <figure class="ph ph--main reveal">
+          <img src="assets/photos/photo-03.jpg" width="1281" height="1600" loading="lazy" decoding="async"
+               alt="Gloved hands working on a chrome motorcycle engine in the workshop">
+        </figure>
+        <figure class="ph ph--inset reveal reveal-d2">
+          <img src="assets/photos/photo-07.jpg" width="1440" height="1440" loading="lazy" decoding="async"
+               alt="A stripped cylinder head on the workshop bench">
+        </figure>
+      </div>
+      <ol class="services">
+        <li class="reveal">
+          <span class="services__n" aria-hidden="true">01</span>
+          <div><h3>Servicing &amp; oil changes</h3><p>Routine services and oil changes for scooters and motorcycles, done in the workshop.</p></div>
+        </li>
+        <li class="reveal">
+          <span class="services__n" aria-hidden="true">02</span>
+          <div><h3>Repairs</h3><p>Mechanical repairs, with the problem and the fix explained in plain English.</p></div>
+        </li>
+        <li class="reveal">
+          <span class="services__n" aria-hidden="true">03</span>
+          <div><h3>Tyres</h3><p>Tyre changes, awkward ones included. One rider’s niche bike, with discontinued tyres, was sorted within three hours.</p></div>
+        </li>
+        <li class="reveal">
+          <span class="services__n" aria-hidden="true">04</span>
+          <div><h3>Brakes</h3><p>Brake work right down to freeing a stuck caliper piston, a job one Honda rider called “fast service and well priced”.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Oversized quote -->
+  <section class="slab" aria-labelledby="slab-title">
+    <div class="wrap">
+      <h2 class="eyebrow" id="slab-title">One of 86 Google reviews</h2>
+      <figure class="bigquote reveal">
+        <blockquote>
+          <p class="bigquote__lead">“Amazing. Needed a quick tyre change after being messed around by other garages. My bike is pretty niche and the tyres are discontinued.</p>
+          <p class="bigquote__hit">Left it with Blons - sorted within 3 hours.</p>
+          <p class="bigquote__tail">No hassle, fair price, friendly staff. Would recommend.”</p>
+        </blockquote>
+        <figcaption>
+          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="i i--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+          <span>George S.</span>
+          <span>Google review, March 2025</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery section section--dark" id="gallery" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <div class="gallery__head reveal">
+        <p class="eyebrow">On the lift</p>
+        <h2 id="gallery-title">Scooters to superbikes, all on the same red lift.</h2>
+        <p>Photos from the workshop floor at Little Western Street. Tap any one to see it full size.</p>
+      </div>
+      <ul class="grid">
+        <li class="g-full reveal">
+          <button class="tile" type="button" data-caption="Kawasaki H2 SX on the lift">
+            <img src="assets/photos/photo-08.jpg" width="1153" height="1152" loading="lazy" decoding="async" style="object-position:50% 45%" alt="Green Kawasaki H2 SX on the red workshop lift">
+            <span class="tile__cap">Kawasaki H2 SX on the lift</span>
+            <span class="tile__zoom" aria-hidden="true"><svg class="i"><use href="#i-zoom"/></svg></span>
+          </button>
+        </li>
+        <li class="reveal reveal-d1">
+          <button class="tile" type="button" data-caption="Honda CB500X in the workshop">
+            <img src="assets/photos/photo-09.jpg" width="1200" height="1600" loading="lazy" decoding="async" style="object-position:40% 55%" alt="Red Honda CB500X adventure bike in the workshop">
+            <span class="tile__cap">Honda CB500X</span>
+            <span class="tile__zoom" aria-hidden="true"><svg class="i"><use href="#i-zoom"/></svg></span>
+          </button>
+        </li>
+        <li class="reveal">
+          <button class="tile" type="button" data-caption="KTM 640 Duke, rear wheel work">
+            <img src="assets/photos/photo-14.jpg" width="1105" height="877" loading="lazy" decoding="async" style="object-position:62% 50%" alt="Orange KTM 640 Duke on the lift while a mechanic works on the rear wheel">
+            <span class="tile__cap">KTM 640 Duke</span>
+            <span class="tile__zoom" aria-hidden="true"><svg class="i"><use href="#i-zoom"/></svg></span>
+          </button>
+        </li>
+        <li class="g-sq reveal">
+          <button class="tile" type="button" data-caption="Kawasaki motocrosser strapped down on the lift">
+            <img src="assets/photos/photo-06.jpg" width="1440" height="1440" loading="lazy" decoding="async" style="object-position:50% 40%" alt="Green Kawasaki motocross bike strapped down on the red lift">
+            <span class="tile__cap">Kawasaki MX</span>
+            <span class="tile__zoom" aria-hidden="true"><svg class="i"><use href="#i-zoom"/></svg></span>
+          </button>
+        </li>
+        <li class="g-sq reveal reveal-d1">
+          <button class="tile" type="button" data-caption="Yamaha scooter on the lift">
+            <img src="assets/photos/photo-10.jpg" width="1600" height="1200" loading="lazy" decoding="async" style="object-position:45% 50%" alt="Matte red Yamaha scooter on the workshop lift">
+            <span class="tile__cap">Yamaha scooter</span>
+            <span class="tile__zoom" aria-hidden="true"><svg class="i"><use href="#i-zoom"/></svg></span>
+          </button>
+        </li>
+        <li class="g-full reveal">
+          <button class="tile" type="button" data-caption="A learner bike, L-plate on">
+            <img src="assets/photos/photo-02.jpg" width="1170" height="876" loading="lazy" decoding="async" style="object-position:50% 40%" alt="Learner motorcycle with an L-plate in the workshop">
+            <span class="tile__cap">A learner bike, L-plate on</span>
+            <span class="tile__zoom" aria-hidden="true"><svg class="i"><use href="#i-zoom"/></svg></span>
+          </button>
+        </li>
+        <li class="g-full reveal reveal-d1">
+          <button class="tile" type="button" data-caption="Scooter front end, stripped down on the lift">
+            <img src="assets/photos/photo-12.jpg" width="1200" height="1600" loading="lazy" decoding="async" style="object-position:50% 18%" alt="Mechanic working on a red scooter on the workshop lift">
+            <span class="tile__cap">Scooter, stripped down</span>
+            <span class="tile__zoom" aria-hidden="true"><svg class="i"><use href="#i-zoom"/></svg></span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Visit -->
+  <section class="visit section" id="visit" aria-labelledby="visit-title">
+    <div class="wrap visit__grid">
+      <div class="visit__info reveal">
+        <p class="eyebrow">Hours &amp; location</p>
+        <h2 id="visit-title">8 Little Western Street</h2>
+        <p class="visit__addr">Brighton BN1 2PU</p>
+        <p class="status" data-status><span class="status-dot" aria-hidden="true"></span><span data-status-text>Opening hours below</span></p>
+        <table class="hours">
+          <caption class="sr-only">Opening hours</caption>
+          <tbody>
+            <tr data-day="monday"><th scope="row">Monday</th><td>9:30 am – 6 pm</td></tr>
+            <tr data-day="tuesday"><th scope="row">Tuesday</th><td>9:30 am – 6 pm</td></tr>
+            <tr data-day="wednesday"><th scope="row">Wednesday</th><td>9:30 am – 6 pm</td></tr>
+            <tr data-day="thursday"><th scope="row">Thursday</th><td>9:30 am – 6 pm</td></tr>
+            <tr data-day="friday"><th scope="row">Friday</th><td>9:30 am – 6 pm</td></tr>
+            <tr data-day="saturday"><th scope="row">Saturday</th><td>9:30 am – 1 pm</td></tr>
+            <tr data-day="sunday" class="is-closed-day"><th scope="row">Sunday</th><td>Closed</td></tr>
+          </tbody>
+        </table>
+        <ul class="facts">
+          <li><svg class="i" aria-hidden="true"><use href="#i-access"/></svg>Wheelchair-accessible entrance</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-tap"/></svg>Contactless and mobile payments</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-flag"/></svg>LGBTQ+ friendly</li>
+        </ul>
+      </div>
+      <div class="visit__aside reveal reveal-d1">
+        <div class="map">
+          <iframe src="https://www.google.com/maps?q=BLONS%20MOTORCYCLES%2C%208%20Little%20Western%20St%2C%20Brighton%20and%20Hove%2C%20Brighton%2C%20BN1%202PU&amp;output=embed"
+                  title="Map showing Blons Motorcycles at 8 Little Western Street, Brighton" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <p class="map__fallback">Map not loading? <a href="https://www.google.com/maps/place/?q=place_id:ChIJB6U89AyFdUgRiSpewLMgjA8" target="_blank" rel="noopener">Open it in Google Maps</a>.</p>
+        <div class="visit__actions">
+          <a class="btn btn--ink" href="https://www.google.com/maps/dir/?api=1&amp;destination=BLONS%20MOTORCYCLES%2C%208%20Little%20Western%20St%2C%20Brighton%20and%20Hove%2C%20Brighton%2C%20BN1%202PU" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-nav"/></svg>Get directions</a>
+          <a class="btn btn--outline" href="tel:+447572170619"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>07572 170619</a>
+        </div>
+        <figure class="visit__photo">
+          <img src="assets/photos/photo-04.jpg" width="1600" height="1200" loading="lazy" decoding="async"
+               alt="The Blons Motorcycles workshop seen from the street, shutter up with bikes inside">
+          <figcaption>The workshop from the street with the shutter up: bikes out front, parts wall at the back.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact section section--dark" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact__grid">
+      <div class="contact__copy reveal">
+        <p class="eyebrow">Book your bike in</p>
+        <h2 id="contact-title">Ring the workshop, or text it.</h2>
+        <p>Have the make, the model and what the bike is doing to hand. Texting works too if you can’t talk right now.</p>
+      </div>
+      <div class="contact__actions reveal reveal-d1">
+        <a class="bignum" href="tel:+447572170619"><small>Call</small><span>07572 170619</span></a>
+        <div class="contact__btns">
+          <a class="btn btn--brand" href="sms:+447572170619?&amp;body=Hello%20Blons%2C%20I%20would%20like%20to%20ask%20about%20my%20bike.%20Make%20and%20model%3A%20"><svg class="i" aria-hidden="true"><use href="#i-sms"/></svg>Send a text</a>
+          <a class="btn btn--line" href="https://www.google.com/maps/dir/?api=1&amp;destination=BLONS%20MOTORCYCLES%2C%208%20Little%20Western%20St%2C%20Brighton%20and%20Hove%2C%20Brighton%2C%20BN1%202PU" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-nav"/></svg>Directions</a>
+        </div>
+        <div class="social">
+          <a href="https://www.facebook.com/blonsgarage/" target="_blank" rel="noopener" aria-label="Blons Motorcycles on Facebook"><svg class="i" aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a>
+          <a href="https://www.instagram.com/blonsmotorcycles/" target="_blank" rel="noopener" aria-label="Blons Motorcycles on Instagram"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg>Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer__grid">
+    <div>
+      <a class="brand" href="#main" aria-label="Blons Motorcycles, back to top">
+        <span class="brand__mark" aria-hidden="true">B</span>
+        <span class="brand__name" aria-hidden="true">Blons<small>Motorcycles</small></span>
+      </a>
+      <p style="margin-top:16px;max-width:32ch">Motorcycle repair and servicing workshop in Brighton.</p>
+    </div>
+    <address>8 Little Western Street<br>Brighton BN1 2PU<br><a href="tel:+447572170619">07572 170619</a></address>
+    <p>Mon–Fri 9:30 am – 6 pm<br>Sat 9:30 am – 1 pm<br>Sun closed</p>
+    <div class="footer__legal">
+      <p>BLONS MOTORCYCLES LTD · Company no. 14879384</p>
+      <p>© <span data-year></span> Blons Motorcycles</p>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Quick actions">
+  <a class="is-primary" href="tel:+447572170619"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call</a>
+  <a href="sms:+447572170619?&amp;body=Hello%20Blons%2C%20I%20would%20like%20to%20ask%20about%20my%20bike.%20Make%20and%20model%3A%20"><svg class="i" aria-hidden="true"><use href="#i-sms"/></svg>Text</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=BLONS%20MOTORCYCLES%2C%208%20Little%20Western%20St%2C%20Brighton%20and%20Hove%2C%20Brighton%2C%20BN1%202PU" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-nav"/></svg>Directions</a>
+</nav>
+
+<dialog class="lightbox" aria-label="Photo viewer">
+  <div class="lb__top">
+    <span class="lb__count" aria-live="polite"></span>
+    <button class="icon-btn" type="button" data-lb="close" aria-label="Close photo viewer"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="lb__stage"><img alt=""></div>
+  <div class="lb__bar">
+    <button class="icon-btn" type="button" data-lb="-1" aria-label="Previous photo"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
+    <p class="lb__cap"></p>
+    <button class="icon-btn" type="button" data-lb="1" aria-label="Next photo"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></button>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  const d = document, root = d.documentElement;
+  root.classList.add('js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  d.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
+
+  /* Header turns solid once the hero starts scrolling away */
+  const header = d.querySelector('.site-header');
+  const onScroll = () => header.classList.toggle('is-solid', scrollY > 24);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* Mobile menu */
+  const toggle = d.querySelector('.menu-toggle'), nav = d.getElementById('site-nav');
+  const setMenu = open => {
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    nav.classList.toggle('is-open', open);
+    root.classList.toggle('menu-open', open);
+    header.classList.toggle('is-solid', open || scrollY > 24);
+  };
+  toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+  nav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  d.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); toggle.focus(); }
+  });
+  matchMedia('(min-width: 960px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
+
+  /* Opening hours: live status in Brighton time + today's row */
+  const HOURS = {
+    monday: '9:30 am–6 pm', tuesday: '9:30 am–6 pm', wednesday: '9:30 am–6 pm', thursday: '9:30 am–6 pm',
+    friday: '9:30 am–6 pm', saturday: '9:30 am–1 pm', sunday: 'Closed'
+  };
+  const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  const suffix = s => (String(s).toLowerCase().match(/(am|pm)\s*$/) || [])[1];
+  const toMin = (s, suf) => {
+    s = String(s).trim().toLowerCase();
+    if (/noon/.test(s)) return 720;
+    if (/midnight/.test(s)) return 0;
+    const m = s.match(/^(\d{1,2})(?:[:.h](\d{2}))?\s*(am|pm)?$/);
+    if (!m) return null;
+    let h = +m[1]; const mm = +(m[2] || 0); suf = m[3] || suf;
+    if (suf === 'pm' && h < 12) h += 12;
+    if (suf === 'am' && h === 12) h = 0;
+    return h * 60 + mm;
+  };
+  const ranges = str => {
+    if (!str || /closed|fermé|ferme/i.test(str)) return [];
+    if (/24\s*hours|24\s*h|24\/7/i.test(str)) return [[0, 1440]];
+    return str.split(/\s*[,;]\s*/).map(part => {
+      const [a, b] = part.split(/\s*[–—-]\s*|\s+to\s+/i);
+      if (!a || !b) return null;
+      let e = toMin(b), s = toMin(a, suffix(a) ? undefined : suffix(b));
+      if (s != null && e != null && !suffix(a) && s > e) s = toMin(a, 'am');
+      if (s == null || e == null) return null;
+      if (e <= s) e += 1440;
+      return [s, e];
+    }).filter(Boolean);
+  };
+  const fmt = m => {
+    m %= 1440;
+    if (m === 0) return 'midnight';
+    const h = Math.floor(m / 60), mm = m % 60;
+    return (h % 12 || 12) + (mm ? ':' + String(mm).padStart(2, '0') : '') + (h < 12 ? ' am' : ' pm');
+  };
+  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+  const nowLondon = () => {
+    try {
+      const p = {};
+      new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', weekday: 'long', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' })
+        .formatToParts(new Date()).forEach(x => { p[x.type] = x.value; });
+      const day = DAYS.indexOf(String(p.weekday).toLowerCase());
+      if (day < 0) throw 0;
+      return { day, min: (+p.hour % 24) * 60 + +p.minute };
+    } catch (_) { const n = new Date(); return { day: n.getDay(), min: n.getHours() * 60 + n.getMinutes() }; }
+  };
+  const getStatus = () => {
+    const { day, min } = nowLondon();
+    const today = ranges(HOURS[DAYS[day]]), yesterday = ranges(HOURS[DAYS[(day + 6) % 7]]);
+    for (const [, e] of yesterday) if (e > 1440 && min < e - 1440) return { day, open: true, text: 'Open now · closes ' + fmt(e) };
+    for (const [s, e] of today) if (min >= s && min < e) {
+      return { day, open: true, text: s === 0 && e >= 1440 ? 'Open 24 hours today' : 'Open now · closes ' + fmt(e) };
+    }
+    for (const [s] of today) if (s > min) return { day, open: false, text: 'Closed now · opens ' + fmt(s) };
+    for (let i = 1; i <= 7; i++) {
+      const r = ranges(HOURS[DAYS[(day + i) % 7]]);
+      if (r.length) return { day, open: false, text: 'Closed now · opens ' + (i === 1 ? 'tomorrow' : cap(DAYS[(day + i) % 7])) + ' ' + fmt(r[0][0]) };
+    }
+    return { day, open: false, text: 'Closed' };
+  };
+  const renderStatus = () => {
+    const st = getStatus();
+    d.querySelectorAll('[data-status]').forEach(el => {
+      el.classList.toggle('is-open', st.open); el.classList.toggle('is-closed', !st.open);
+      el.querySelector('[data-status-text]').textContent = st.text;
+    });
+    d.querySelectorAll('.hours tr').forEach(tr => {
+      const isToday = tr.dataset.day === DAYS[st.day];
+      tr.classList.toggle('is-today', isToday);
+      const tag = tr.querySelector('.today-tag');
+      if (isToday && !tag) {
+        const t = d.createElement('span'); t.className = 'today-tag'; t.textContent = 'Today';
+        tr.querySelector('th').appendChild(t);
+      } else if (!isToday && tag) tag.remove();
+    });
+  };
+  renderStatus(); setInterval(renderStatus, 60000);
+
+  /* Scroll reveals */
+  const io = 'IntersectionObserver' in window && !reduce
+    ? new IntersectionObserver(entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      }), { rootMargin: '0px 0px -6% 0px', threshold: 0.06 })
+    : null;
+  d.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('is-in'));
+
+  /* Count-up on the review total */
+  const num = d.querySelector('[data-count]');
+  if (num && io) {
+    const target = +num.dataset.count;
+    num.textContent = '0';
+    const o = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      o.disconnect();
+      const t0 = performance.now(), dur = 1300;
+      const tick = t => {
+        const p = Math.min(1, (t - t0) / dur);
+        num.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, { threshold: 0.6 });
+    o.observe(num);
+  }
+
+  /* Review rail buttons */
+  const rail = d.querySelector('.rail');
+  d.querySelectorAll('[data-rail]').forEach(b => b.addEventListener('click', () => {
+    const card = rail.querySelector('.review');
+    const step = card ? card.getBoundingClientRect().width + 16 : 320;
+    rail.scrollBy({ left: step * +b.dataset.rail, behavior: reduce ? 'auto' : 'smooth' });
+  }));
+
+  /* Gallery lightbox */
+  const dlg = d.querySelector('.lightbox');
+  const tiles = [...d.querySelectorAll('.tile')];
+  if (dlg && typeof dlg.showModal === 'function' && tiles.length) {
+    const img = dlg.querySelector('.lb__stage img'), capEl = dlg.querySelector('.lb__cap'), count = dlg.querySelector('.lb__count');
+    let idx = 0, opener = null, x0 = null;
+    const show = i => {
+      idx = (i + tiles.length) % tiles.length;
+      const src = tiles[idx].querySelector('img');
+      img.src = src.getAttribute('src'); img.alt = src.alt;
+      capEl.textContent = tiles[idx].dataset.caption;
+      count.textContent = (idx + 1) + ' / ' + tiles.length;
+    };
+    tiles.forEach((t, i) => t.addEventListener('click', () => { opener = t; show(i); dlg.showModal(); root.classList.add('menu-open'); }));
+    dlg.addEventListener('close', () => { root.classList.remove('menu-open'); if (opener) opener.focus(); });
+    dlg.addEventListener('click', e => {
+      const b = e.target.closest('[data-lb]');
+      if (b) { b.dataset.lb === 'close' ? dlg.close() : show(idx + +b.dataset.lb); }
+      else if (e.target === dlg || e.target.classList.contains('lb__stage')) dlg.close();
+    });
+    dlg.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') show(idx + 1);
+      if (e.key === 'ArrowLeft') show(idx - 1);
+    });
+    dlg.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    dlg.addEventListener('touchend', e => {
+      if (x0 == null) return;
+      const dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+    });
+  }
+})();
+</script>
+<!--sf:preview--><div style="padding:18px 16px;font:13px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;text-align:center;background:#0f0f10;color:#a3a3a8">Preview made by Aymen Jallouli for BLONS MOTORCYCLES: this is not yet the business's official website.</div><!--/sf:preview-->
+<!--sf:track--><script>(function(){try{var q=new URLSearchParams(location.search),r=q.get('r')||sessionStorage.getItem('sf_r');if(!r)return;sessionStorage.setItem('sf_r',r);navigator.sendBeacon("https://track.aymenjallouli.dev/t"+'?r='+encodeURIComponent(r)+'&p='+encodeURIComponent(location.pathname));}catch(e){}})();</script><!--/sf:track-->
+</body>
+</html>
